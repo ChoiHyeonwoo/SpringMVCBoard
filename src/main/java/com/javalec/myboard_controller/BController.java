@@ -14,12 +14,19 @@ public class BController {
 	
 	@RequestMapping("/list")
 	public String list(Model model){
+		System.out.println("list();");
 		
 		command = new BListCommand();
 		command.execute(model);
 		
 		return "list";
 	}
+	@RequestMapping("write_view")
+	public String write_view(Model model){
+		
+		System.out.println("write_view()");
+		
+		return "write_view";
+	}
 	
-
 }
