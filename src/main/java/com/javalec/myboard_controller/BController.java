@@ -5,10 +5,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javalec.myboard_command.BCommand;
 import com.javalec.myboard_command.BContentCommand;
+import com.javalec.myboard_command.BDeleteCommand;
 import com.javalec.myboard_command.BListCommand;
+import com.javalec.myboard_command.BModifyCommand;
+import com.javalec.myboard_command.BReplyCommand;
+import com.javalec.myboard_command.BReplyViewCommand;
 import com.javalec.myboard_command.BWriteCommand;
 
 @Controller
@@ -25,7 +30,7 @@ public class BController {
 		
 		return "list";
 	}
-	@RequestMapping("write_view")
+	@RequestMapping("/write_view")
 	public String write_view(Model model){
 		//리스트를 보여주는 컨트롤러
 		
@@ -33,7 +38,7 @@ public class BController {
 		
 		return "write_view";
 	}
-	@RequestMapping("write")
+	@RequestMapping("/write")
 	public String write(HttpServletRequest request, Model model) {
 		System.out.println("write()");
 		
@@ -43,7 +48,7 @@ public class BController {
 					
 		return "redirect:list";
 	}
-	@RequestMapping("content_view")
+	@RequestMapping("/content_view")
 	public String content_view(HttpServletRequest request, Model model) {
 		System.out.println("content_view()");
 		
@@ -54,4 +59,46 @@ public class BController {
 			
 		return "content_view";
 	}
+	@RequestMapping(method=RequestMethod.POST, value="/modify")
+	public String modify(HttpServletRequest request, Model model){
+		System.out.println("modify()");
+		
+		model.addAttribute("request", request);
+		command = new BModifyCommand();
+		command.execute(model);
+		
+		return "redirect:list";
+	}
+	@RequestMapping("/reply_view")
+	public String reply_view(HttpServletRequest request, Model model){
+		System.out.println("reply_view()");
+		model.addAttribute("request", request);
+		
+		command = new BReplyViewCommand();
+		command.execute(model);
+				
+		return "reply_view";		
+	}
+	@RequestMapping("/reply")
+	public String reply(HttpServletRequest request, Model model){
+		System.out.println("reply()");
+		
+		model.addAttribute("request", request);
+		
+		command = new BReplyCommand();
+		command.execute(model);
+		
+		return "redirect:list";
+	}
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest request, Model model){
+		System.out.println("delete()");
+		
+		model.addAttribute("request", request);
+		command = new BDeleteCommand();
+		command.execute(model);
+				
+		return "redirect:list";
+	}
+	
 }
