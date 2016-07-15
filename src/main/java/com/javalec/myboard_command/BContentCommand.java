@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import com.javalec.myboard_dao.BDao;
+import com.javalec.myboard_dto.BDto;
+
 public class BContentCommand implements BCommand {
 	// 클릭한 게시판의 내용을 보는 
 	@Override
