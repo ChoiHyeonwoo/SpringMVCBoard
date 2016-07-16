@@ -20,7 +20,7 @@ public class BListCommand implements BCommand {
 		ArrayList<BDto> dtos = dao.list();
 		
 		model.addAttribute("list", dtos);
-		
+		//뉸ㄴㄴ냐냐
 	}
 
 }
