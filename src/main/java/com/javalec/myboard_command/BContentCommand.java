@@ -20,7 +20,7 @@ public class BContentCommand implements BCommand {
 		 String bId = request.getParameter("bId");
 		 
 		 BDao dao = new BDao();
-		 BDto dto = new BDto();
+		 BDto dto = dao.contentView(bId);
 		 
 		 model.addAttribute("content_view", dto);
 		 
