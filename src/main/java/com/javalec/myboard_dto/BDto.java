@@ -8,18 +8,28 @@ public class BDto {
 	int bId;
 	String bName;
 	String bTitle;
+	String bContent;
 	Timestamp bDate;
 	int bHit;
 	int bGroup;
+	int bStep;
+	public int getbStep() {
+		return bStep;
+	}
+	public void setbStep(int bStep) {
+		this.bStep = bStep;
+	}
+
 	int bIndent;
 	
 	public BDto(){
 		
 	}
 	public BDto(int bId, String bName, 
-			String bTitle, Timestamp bDate, int bHit, int bGroup, int bIndent){
+			String bTitle,String bContent, Timestamp bDate, int bHit, int bGroup, int bStep, int bIndent){
 		this.bId = bId;
 		this.bName = bName;
+		this.bContent = bContent;
 		this.bTitle = bTitle;
 		this.bDate = bDate;
 		this.bHit = bHit;
@@ -28,6 +38,12 @@ public class BDto {
 		
 	}
 
+	public String getbContent() {
+		return bContent;
+	}
+	public void setbContent(String bContent) {
+		this.bContent = bContent;
+	}
 	public int getbId() {
 		return bId;
 	}
