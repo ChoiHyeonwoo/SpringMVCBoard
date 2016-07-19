@@ -17,7 +17,8 @@ public class BDeleteCommand implements BCommand {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		
 		String bId = request.getParameter("bId");
-		BDao dao = new BDao(); 
+		BDao dao = new BDao();
+
 		dao.delete(bId);
 		
 	}
